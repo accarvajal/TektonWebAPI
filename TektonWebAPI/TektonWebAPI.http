@@ -1,0 +1,48 @@
+### Login
+# @name login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "password"
+}
+
+### Get Product by ID
+# @name getProduct
+GET http://localhost:5000/api/product/1
+Authorization: Bearer {{login.response.body.token}}
+
+### Create new Product
+# @name createProduct
+POST http://localhost:5000/api/product
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "productId": 2,
+  "name": "New Product",
+  "statusName": "Active",
+  "stock": 100,
+  "description": "This is a new product",
+  "price": 29.99,
+  "discount": 5.00,
+  "finalPrice": 24.99
+}
+
+### Update a Product
+# @name updateProduct
+PUT http://localhost:5000/api/product/2
+Content-Type: application/json
+Authorization: Bearer {{login.response.body.token}}
+
+{
+  "productId": 2,
+  "name": "Updated Product",
+  "statusName": "Active",
+  "stock": 150,
+  "description": "This is an updated product",
+  "price": 39.99,
+  "discount": 10.00,
+  "finalPrice": 29.99
+}
