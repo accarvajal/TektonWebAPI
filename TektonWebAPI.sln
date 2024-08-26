@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TektonWebAPI", "TektonWebAPI\TektonWebAPI.csproj", "{D609AF73-8813-4B98-ABBC-9A26F32E35ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TektonWebAPI", "TektonWebAPI\TektonWebAPI.csproj", "{D609AF73-8813-4B98-ABBC-9A26F32E35ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TektonWebAPI.Tests", "TektonWebAPI.Tests\TektonWebAPI.Tests.csproj", "{93BA58B7-3DA0-4CB8-99BF-6B39E4849C24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TektonWebAPI.Tests", "TektonWebAPI.Tests\TektonWebAPI.Tests.csproj", "{93BA58B7-3DA0-4CB8-99BF-6B39E4849C24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TektonWebAPI.Core", "TektonWebAPI.Core\TektonWebAPI.Core.csproj", "{BFF6AD2C-005B-4CC7-8215-78C5449B6051}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TektonWebAPI.Core", "TektonWebAPI.Core\TektonWebAPI.Core.csproj", "{BFF6AD2C-005B-4CC7-8215-78C5449B6051}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TektonWebAPI.Application", "TektonWebAPI.Application\TektonWebAPI.Application.csproj", "{E6E9EB0B-8875-41D6-A2F7-9BFB2358E1FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TektonWebAPI.Application", "TektonWebAPI.Application\TektonWebAPI.Application.csproj", "{E6E9EB0B-8875-41D6-A2F7-9BFB2358E1FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TektonWebAPI.Infrastructure", "TektonWebAPI.Infrastructure\TektonWebAPI.Infrastructure.csproj", "{18826F5F-4379-4A86-9878-2F9B2A46B75C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TektonWebAPI.Infrastructure", "TektonWebAPI.Infrastructure\TektonWebAPI.Infrastructure.csproj", "{18826F5F-4379-4A86-9878-2F9B2A46B75C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -40,7 +40,13 @@ public class ProductService(IProductRepository productRepository) : IProductServ
     {
         try
         {
-            await _productRepository.UpdateAsync(product);
+            var result = await _productRepository.UpdateAsync(product);
+
+            if (result.IsFailure)
+            {
+                return Result<Product>.Failure($"Product with ID {product.ProductId} was not found.");
+            }
+
             return Result.Success();
         }
         catch

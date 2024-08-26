@@ -1,4 +1,6 @@
-﻿namespace TektonWebAPI.Infrastructure.Repositories;
+﻿using TektonWebAPI.Core.Entities;
+
+namespace TektonWebAPI.Infrastructure.Repositories;
 
 public class ProductRepository(ProductDbContext context) : IProductRepository
 {
@@ -41,6 +43,13 @@ public class ProductRepository(ProductDbContext context) : IProductRepository
     {
         try
         {
+            var productQuery = await _context.Products.FindAsync(product.ProductId);
+
+            if (productQuery == null)
+            {
+                return Result<Product>.Failure("Product not found.");
+            }
+
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
             return Result.Success();
