@@ -14,7 +14,7 @@ public class AddProductCommandHandler(IProductService productService, IMapper ma
 
         if (result.IsFailure)
         {
-            return Result<int>.Failure(result.Error);
+            return Result<int>.Failure(result.Error, result.ErrorCode);
         }
 
         return Result<int>.Success(product.ProductId);

@@ -59,4 +59,78 @@ public class AddProductCommandHandlerTests
         result.IsSuccess.Should().BeTrue();
         result.Value.Should().Be(product.ProductId);
     }
+
+    [Fact]
+    public async Task Handle_ShouldReturnFailureResult_WhenProductIdIsDuplicate()
+    {
+        // Arrange
+        var productDto = new ProductRequestDto
+        {
+            ProductId = 1,
+            Name = "Duplicate Product",
+            Status = 1,
+            Stock = 10,
+            Description = "Duplicate Description",
+            Price = 100.0m
+        };
+        var product = new Product
+        {
+            ProductId = 1,
+            Name = "Duplicate Product",
+            Status = 1,
+            Stock = 10,
+            Description = "Duplicate Description",
+            Price = 100.0m
+        };
+        var command = new AddProductCommand(productDto);
+
+        _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
+            .Returns(product);
+        _productServiceMock.Setup(service => service.AddAsync(product))
+            .ReturnsAsync(Result<int>.Failure("Product ID already exists"));
+
+        // Act
+        var result = await _handler.Handle(command, CancellationToken.None);
+
+        // Assert
+        result.IsSuccess.Should().BeFalse();
+        result.Error.Should().Be("Product ID already exists");
+    }
+
+    [Fact]
+    public async Task Handle_ShouldReturnFailureResult_WhenProductIsInvalid()
+    {
+        // Arrange
+        var productDto = new ProductRequestDto
+        {
+            ProductId = 1,
+            Name = "", // Invalid name
+            Status = 1,
+            Stock = 10,
+            Description = "Invalid Description",
+            Price = 100.0m
+        };
+        var product = new Product
+        {
+            ProductId = 1,
+            Name = "", // Invalid name
+            Status = 1,
+            Stock = 10,
+            Description = "Invalid Description",
+            Price = 100.0m
+        };
+        var command = new AddProductCommand(productDto);
+
+        _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
+            .Returns(product);
+        _productServiceMock.Setup(service => service.AddAsync(product))
+            .ReturnsAsync(Result<int>.Failure("Invalid product data"));
+
+        // Act
+        var result = await _handler.Handle(command, CancellationToken.None);
+
+        // Assert
+        result.IsSuccess.Should().BeFalse();
+        result.Error.Should().Be("Invalid product data");
+    }
 }

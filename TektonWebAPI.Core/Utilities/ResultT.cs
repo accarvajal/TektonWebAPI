@@ -2,14 +2,8 @@
 
 public class Result<T> : Result
 {
-    public T? Value { get; }
+    public T? Value { get; private set; }
 
-    protected Result(T? value, bool isSuccess, string error)
-        : base(isSuccess, error)
-    {
-        Value = value;
-    }
-
-    public static Result<T> Success(T value) => new(value, true, string.Empty);
-    public static new Result<T> Failure(string error) => new(default, false, error);
+    public static Result<T> Success(T? value) => new() { IsSuccess = true, Value = value, ErrorCode = ErrorCode.None };
+    public static Result<T> Failure(string error, ErrorCode errorCode) => new() { IsSuccess = false, Error = error, ErrorCode = errorCode };
 }

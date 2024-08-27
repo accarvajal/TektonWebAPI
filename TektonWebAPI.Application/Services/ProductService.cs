@@ -6,52 +6,37 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 
     public async Task<Result<Product>> GetByIdAsync(int productId)
     {
-        try
-        {
-            var result = await _productRepository.GetByIdAsync(productId);
+        var result = await _productRepository.GetByIdAsync(productId);
 
-            if (result.IsFailure)
-            {
-                return Result<Product>.Failure($"Product with ID {productId} was not found.");
-            }
-
-            return Result<Product>.Success(result.Value!);
-        }
-        catch
+        if (result.IsFailure)
         {
-            return Result<Product>.Failure("An error occurred while retrieving the product.");
+            return Result<Product>.Failure(result.Error, result.ErrorCode);
         }
+
+        return Result<Product>.Success(result.Value!);
     }
 
     public async Task<Result> AddAsync(Product product)
     {
-        try
+        var result = await _productRepository.AddAsync(product);
+
+        if (result.IsFailure)
         {
-            await _productRepository.AddAsync(product);
-            return Result.Success();
+            return Result<Product>.Failure(result.Error, result.ErrorCode);
         }
-        catch
-        {
-            return Result.Failure("An error occurred while adding the product.");
-        }
+
+        return Result.Success();
     }
 
     public async Task<Result> UpdateAsync(Product product)
     {
-        try
-        {
-            var result = await _productRepository.UpdateAsync(product);
+        var result = await _productRepository.UpdateAsync(product);
 
-            if (result.IsFailure)
-            {
-                return Result<Product>.Failure($"Product with ID {product.ProductId} was not found.");
-            }
-
-            return Result.Success();
-        }
-        catch
+        if (result.IsFailure)
         {
-            return Result.Failure("An error occurred while updating the product.");
+            return Result.Failure(result.Error, result.ErrorCode);
         }
+
+        return Result.Success();
     }
 }

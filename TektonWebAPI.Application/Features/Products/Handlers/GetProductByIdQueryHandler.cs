@@ -22,7 +22,7 @@ public class GetProductByIdQueryHandler(
 
         if (result.IsFailure)
         {
-            return Result<ProductResponseDto>.Failure(result.Error);
+            return Result<ProductResponseDto>.Failure(result.Error, result.ErrorCode);
         }
 
         var productDto = _mapper.Map<ProductResponseDto>(result.Value);

@@ -2,16 +2,11 @@
 
 public class Result
 {
-    public bool IsSuccess { get; }
-    public string Error { get; }
+    public bool IsSuccess { get; set; }
+    public string Error { get; set; } = string.Empty;
     public bool IsFailure => !IsSuccess;
+    public ErrorCode ErrorCode { get; set; }
 
-    protected Result(bool isSuccess, string error)
-    {
-        IsSuccess = isSuccess;
-        Error = error;
-    }
-
-    public static Result Success() => new(true, string.Empty);
-    public static Result Failure(string error) => new(false, error);
+    public static Result Success() => new() { IsSuccess = true, ErrorCode = ErrorCode.None };
+    public static Result Failure(string error, ErrorCode errorCode) => new() { IsSuccess = false, Error = error, ErrorCode = errorCode };
 }

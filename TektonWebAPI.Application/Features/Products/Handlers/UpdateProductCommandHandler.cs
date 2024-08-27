@@ -11,7 +11,7 @@ public class UpdateProductCommandHandler(IProductService productService, IMapper
     {
         if (request.ProductId != request.ProductDto.ProductId)
         {
-            return Result.Failure("Product ID mismatch.");
+            return Result.Failure("Product ID mismatch.", errorCode: ErrorCode.GeneralError);
         }
 
         var product = _mapper.Map<Product>(request.ProductDto);
@@ -19,7 +19,7 @@ public class UpdateProductCommandHandler(IProductService productService, IMapper
 
         if (result.IsFailure)
         {
-            return Result.Failure(result.Error);
+            return Result.Failure(result.Error, result.ErrorCode);
         }
 
         return Result.Success();

@@ -19,7 +19,7 @@ public class AuthService(IOptions<JwtSettings> jwtSettings) : IAuthService
             return Result<string>.Success(await Task.FromResult(GenerateToken(username)));
         }
 
-        return Result<string>.Failure("Invalid username or password.");
+        return Result<string>.Failure("Invalid username or password.", errorCode: ErrorCode.GeneralError);
     }
 
     private string GenerateToken(string username)

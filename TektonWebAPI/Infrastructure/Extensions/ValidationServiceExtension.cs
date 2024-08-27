@@ -10,6 +10,7 @@ public static class ValidationServiceExtension
     {
         services.AddValidatorsFromAssemblyContaining<ProductValidator>();
         services.AddFluentValidationAutoValidation();
+        services.AddFluentValidationClientsideAdapters();
 
         return services;
     }
