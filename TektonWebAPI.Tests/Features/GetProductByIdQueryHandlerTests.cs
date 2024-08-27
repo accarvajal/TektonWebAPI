@@ -87,7 +87,7 @@ public class GetProductByIdQueryHandlerTests
         var query = new GetProductByIdQuery(productId);
 
         _productServiceMock.Setup(service => service.GetByIdAsync(productId))
-            .ReturnsAsync(Result<Product>.Failure("Product not found."));
+            .ReturnsAsync(Result<Product>.Failure("Product not found.", ErrorCode.ProductNotFound));
 
         // Act
         var result = await _handler.Handle(query, CancellationToken.None);

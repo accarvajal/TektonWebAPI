@@ -87,7 +87,7 @@ public class AddProductCommandHandlerTests
         _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
             .Returns(product);
         _productServiceMock.Setup(service => service.AddAsync(product))
-            .ReturnsAsync(Result<int>.Failure("Product ID already exists"));
+            .ReturnsAsync(Result<int>.Failure("Product ID already exists", ErrorCode.ProductAlreadyExists));
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);
@@ -124,7 +124,7 @@ public class AddProductCommandHandlerTests
         _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
             .Returns(product);
         _productServiceMock.Setup(service => service.AddAsync(product))
-            .ReturnsAsync(Result<int>.Failure("Invalid product data"));
+            .ReturnsAsync(Result<int>.Failure("Invalid product data", ErrorCode.GeneralError));
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);
