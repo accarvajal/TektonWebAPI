@@ -57,7 +57,7 @@ Este proyecto contiene las pruebas unitarias e integrales para el proyecto `Tekt
 
 ## Ejecución del Proyecto con Linea de Comandos
 
-1. Clonar el repositorio.
+1. Clonar el repositorio: https://github.com/accarvajal/TektonWebAPI.git.
 2. Navegar a la carpeta del proyecto.
 3. Ejecutar `dotnet restore` para restaurar las dependencias.
 4. Ejecutar `dotnet ef database update` para crear la base de datos SQLite.
@@ -154,8 +154,10 @@ Para obtener el descuento de un producto, el `DiscountService` realiza una solic
 
 ## Patrones y Principios
 
+- **Clean Architecture**: Para separación de responsabilidades, independencia tecnológica, facilidad de pruebas, flexibilidad y escalabilidad, y mantenibilidad.
 - **Repository Pattern**: Para el acceso a datos.
+- **Mediator Pattern**: Para reducir la complejidad en la comunicación entre múltiples clases. Beneficios: Desacoplamiento, Organización, Facilidad de pruebas, Flexibilidad y Manejo de comandos y consultas
 - **CQRS**: Separación de comandos y consultas.
 - **SOLID**: Principios de diseño de software.
-- **RESULT**: Patrón para gestión de errores y resultados.
+- **Result Pattern**: Patrón para gestión de errores y resultados.
 - **TDD**: Desarrollo guiado por pruebas.
