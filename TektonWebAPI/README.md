@@ -17,25 +17,27 @@ Este es el proyecto principal de la API. Contiene los controladores, modelos y s
 - **Models**: Contiene los modelos de datos utilizados por la API.
 - **Services**: Contiene los servicios de la aplicación.
 - **Program.cs**: Punto de entrada de la aplicación.
-- **Startup.cs**: Configuración de la aplicación.
-- **appsettings.json**: Configuración de la aplicación.
+- **appsettings.json**: Configuración de la aplicación y conexión a BD.
 
 ### `TektonWebAPI.Application`
 
-Este proyecto contiene la lógica de aplicación, incluyendo comandos, consultas, interfaces y DTOs.
+Este proyecto contiene la lógica de aplicación como CQRS ,incluyendo comandos, consultas, y también interfaces y DTOs usados por la aplicación.
 
-- **Commands**: Contiene los comandos de la aplicación.
-- **Queries**: Contiene las consultas de la aplicación.
-- **Interfaces**: Contiene las interfaces de la aplicación.
+- **Auth**: Contiene los comandos de la aplicación.
 - **DTOs**: Contiene los objetos de transferencia de datos (DTOs).
+- **Features**: Contiene la implementación de CQRS.
+- **Interfaces**: Contiene las interfaces de la aplicación.
+- **Mappers**: Contiene los perfiles de configuración de Mapeo de Clases.
+- **Services**: Contiene los servicios que se conectan con los repositorios.
+- **Validations**: Contiene la logica de validaciones.
 
 ### `TektonWebAPI.Core`
 
-Este proyecto contiene las entidades, interfaces y objetos de valor.
+Este proyecto contiene las entidades, interfaces y objetos de valor que son esenciales para la aplicación (dominio).
 
 - **Entities**: Contiene las entidades.
-- **Interfaces**: Contiene las interfaces.
-- **ValueObjects**: Contiene los objetos de valor.
+- **Interfaces**: Contiene las interfaces esenciales.
+- **Utilities**: Contiene la implementación del patrón Result para manejo de resultados de operaciones y errores.
 
 ### `TektonWebAPI.Infrastructure`
 
@@ -127,8 +129,10 @@ Ejecutar `dotnet test` para correr las pruebas unitarias.
 
 ## Endpoints
 
+Para ejecutar los endpoints de forma satisfactoria, debemos iniciar sesión usando la api adecuada como se indica a continuación.
+
 - `/swagger/index.html`: Documentación de Endpoints en Swagger.
-- `POST /api/auth/login`: Iniciar sesión. Para poder acceder a los demás endpoints, se debe iniciar .
+- `POST /api/auth/login`: Iniciar sesión. Para poder acceder a los demás endpoints. Usar user: "admin", password: "password". Usar el token entregado por este endpoint, y mediante el botón Authorize de Swagger, ingresar: Bearer <token>
 - `GET /api/product/{id}`: Obtener producto por ID.
 - `POST /api/product`: Crear un nuevo producto.
 - `PUT /api/product/{id}`: Actualizar un producto existente.
