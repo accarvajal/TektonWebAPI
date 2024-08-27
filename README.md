@@ -60,7 +60,7 @@ Este proyecto contiene las pruebas unitarias e integrales para el proyecto `Tekt
 1. Clonar el repositorio: https://github.com/accarvajal/TektonWebAPI.git.
 2. Navegar a la carpeta del proyecto.
 3. Ejecutar `dotnet restore` para restaurar las dependencias.
-4. Ejecutar `dotnet ef database update` para crear la base de datos SQLite.
+4. Ejecutar `dotnet ef database update` para crear la base de datos SQLite (** Aunque esta BD ya está creada y se incluye aqui).
 5. Ejecutar `dotnet run` para iniciar la API.
 
 
