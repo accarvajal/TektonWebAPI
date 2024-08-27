@@ -1,49 +1,49 @@
 # Product API
 
-## Descripción
+## DescripciÃ³n
 
-Este proyecto es una API RESTful para la gestión de productos. Implementa la arquitectura Clean Architecture, principios SOLID, Clean Code, y patrones de diseño como Repository, CQRS, Result. La API está documentada con Swagger.
+Este proyecto es una API RESTful para la gestiÃ³n de productos. Implementa la arquitectura Clean Architecture, principios SOLID, Clean Code, y patrones de diseÃ±o como Repository, CQRS, Result. La API estÃ¡ documentada con Swagger.
 
-Los proyectos que hacen parte de la solución estan desarrollados en .NET 8 C#.
+Los proyectos que hacen parte de la soluciÃ³n estan desarrollados en .NET 8 C#.
 
 ## Estructura del Proyecto
 
 ### `TektonWebAPI`
 
-Este es el proyecto principal de la API. Contiene los controladores, modelos y servicios necesarios para ejecutar la aplicación.
+Este es el proyecto principal de la API. Contiene los controladores, modelos y servicios necesarios para ejecutar la aplicaciÃ³n.
 
 - **Products.db**: Base de Datos SQLite.
 - **Controllers**: Contiene los controladores de la API.
 - **Models**: Contiene los modelos de datos utilizados por la API.
-- **Services**: Contiene los servicios de la aplicación.
-- **Program.cs**: Punto de entrada de la aplicación.
-- **appsettings.json**: Configuración de la aplicación y conexión a BD.
+- **Services**: Contiene los servicios de la aplicaciÃ³n.
+- **Program.cs**: Punto de entrada de la aplicaciÃ³n.
+- **appsettings.json**: ConfiguraciÃ³n de la aplicaciÃ³n y conexiÃ³n a BD.
 
 ### `TektonWebAPI.Application`
 
-Este proyecto contiene la lógica de aplicación como CQRS ,incluyendo comandos, consultas, y también interfaces y DTOs usados por la aplicación.
+Este proyecto contiene la lÃ³gica de aplicaciÃ³n como CQRS ,incluyendo comandos, consultas, y tambiÃ©n interfaces y DTOs usados por la aplicaciÃ³n.
 
-- **Auth**: Contiene los comandos de la aplicación.
+- **Auth**: Contiene los comandos de la aplicaciÃ³n.
 - **DTOs**: Contiene los objetos de transferencia de datos (DTOs).
-- **Features**: Contiene la implementación de CQRS.
-- **Interfaces**: Contiene las interfaces de la aplicación.
-- **Mappers**: Contiene los perfiles de configuración de Mapeo de Clases.
+- **Features**: Contiene la implementaciÃ³n de CQRS.
+- **Interfaces**: Contiene las interfaces de la aplicaciÃ³n.
+- **Mappers**: Contiene los perfiles de configuraciÃ³n de Mapeo de Clases.
 - **Services**: Contiene los servicios que se conectan con los repositorios.
 - **Validations**: Contiene la logica de validaciones.
 
 ### `TektonWebAPI.Core`
 
-Este proyecto contiene las entidades, interfaces y objetos de valor que son esenciales para la aplicación (dominio).
+Este proyecto contiene las entidades, interfaces y objetos de valor que son esenciales para la aplicaciÃ³n (dominio).
 
 - **Entities**: Contiene las entidades.
 - **Interfaces**: Contiene las interfaces esenciales.
-- **Utilities**: Contiene la implementación del patrón Result para manejo de resultados de operaciones y errores.
+- **Utilities**: Contiene la implementaciÃ³n del patrÃ³n Result para manejo de resultados de operaciones y errores.
 
 ### `TektonWebAPI.Infrastructure`
 
-Este proyecto contiene la implementación de la infraestructura, incluyendo acceso a datos y servicios externos.
+Este proyecto contiene la implementaciÃ³n de la infraestructura, incluyendo acceso a datos y servicios externos.
 
-- **Data**: Contiene la configuración de acceso a datos.
+- **Data**: Contiene la configuraciÃ³n de acceso a datos.
 - **Repositories**: Contiene las implementaciones de los repositorios.
 - **Services**: Contiene las implementaciones de los servicios de infraestructura.
 
@@ -55,16 +55,16 @@ Este proyecto contiene las pruebas unitarias e integrales para el proyecto `Tekt
 - **Features**: Contiene las pruebas integrales de CQRS.
 - **Services**: Contiene las pruebas integrales de los servicios.
 
-## Ejecución del Proyecto con Linea de Comandos
+## EjecuciÃ³n del Proyecto con Linea de Comandos
 
 1. Clonar el repositorio: https://github.com/accarvajal/TektonWebAPI.git.
 2. Navegar a la carpeta del proyecto.
 3. Ejecutar `dotnet restore` para restaurar las dependencias.
-4. Ejecutar `dotnet ef database update` para crear la base de datos SQLite (** Aunque esta BD ya está creada y se incluye aqui).
+4. Ejecutar `dotnet ef database update` para crear la base de datos SQLite (** Aunque esta BD ya estÃ¡ creada y se incluye aqui).
 5. Ejecutar `dotnet run` para iniciar la API.
 
 
-## Ejecución del Proyecto con Docker
+## EjecuciÃ³n del Proyecto con Docker
 
 Para ejecutar el proyecto utilizando Docker, sigue estos pasos:
 
@@ -86,37 +86,37 @@ Para ejecutar el proyecto utilizando Docker, sigue estos pasos:
     docker run -d -p 8080:80 --name tektonwebapi-container tektonwebapi
     ```
 
-4. Verifica que el contenedor esté corriendo:
+4. Verifica que el contenedor estÃ© corriendo:
 
     ```sh
     docker ps
     ```
 
-5. Accede a la aplicación en `http://localhost:8080`.
+5. Accede a la aplicaciÃ³n en `http://localhost:8080`.
 
 6. Accede a Swagger en `http://localhost:8080/swagger`.
 
 ## Notas Adicionales
 
-- **Dockerfile**: Asegúrate de que tu `Dockerfile` esté correctamente configurado para construir y ejecutar tu aplicación .NET.
-- **Puertos**: Ajusta los puertos según sea necesario para tu aplicación.
-- **Variables de Entorno**: Si tu aplicación requiere variables de entorno, puedes pasarlas al contenedor usando la opción `-e` en el comando `docker run`.
+- **Dockerfile**: AsegÃºrate de que tu `Dockerfile` estÃ© correctamente configurado para construir y ejecutar tu aplicaciÃ³n .NET.
+- **Puertos**: Ajusta los puertos segÃºn sea necesario para tu aplicaciÃ³n.
+- **Variables de Entorno**: Si tu aplicaciÃ³n requiere variables de entorno, puedes pasarlas al contenedor usando la opciÃ³n `-e` en el comando `docker run`.
 
     ```sh
     docker run -d -p 8080:80 --name tektonwebapi-container -e "ASPNETCORE_ENVIRONMENT=Development" tektonwebapi
     ```
 
-Con estos pasos, deberías poder construir y ejecutar tu proyecto .NET con Docker desde la línea de comandos.
+Con estos pasos, deberÃ­as poder construir y ejecutar tu proyecto .NET con Docker desde la lÃ­nea de comandos.
 
 
-## Ejecución de Pruebas
+## EjecuciÃ³n de Pruebas
 
 Ejecutar `dotnet test` para correr las pruebas unitarias.
 
 
 ## Requisitos
 
-- .NET Core (última versión)
+- .NET Core (Ãºltima versiÃ³n)
 - AutoMapper
 - FluentValidation
 - Swagger
@@ -129,10 +129,10 @@ Ejecutar `dotnet test` para correr las pruebas unitarias.
 
 ## Endpoints
 
-Para ejecutar los endpoints de forma satisfactoria, debemos iniciar sesión usando la api adecuada como se indica a continuación.
+Para ejecutar los endpoints de forma satisfactoria, debemos iniciar sesiÃ³n usando la api adecuada como se indica a continuaciÃ³n.
 
-- `/swagger/index.html`: Documentación de Endpoints en Swagger.
-- `POST /api/auth/login`: Iniciar sesión. Para poder acceder a los demás endpoints. Usar user: "admin", password: "password". Usar el token entregado por este endpoint, y mediante el botón Authorize de Swagger, ingresar: Bearer <token>
+- `/swagger/index.html`: DocumentaciÃ³n de Endpoints en Swagger.
+- `POST /api/auth/login`: Iniciar sesiÃ³n. Para poder acceder a los demÃ¡s endpoints. Usar user: "admin", password: "password". Usar el token entregado por este endpoint, y mediante el botÃ³n Authorize de Swagger, ingresar el token asi: Bearer token
 - `GET /api/product/{id}`: Obtener producto por ID.
 - `POST /api/product`: Crear un nuevo producto.
 - `PUT /api/product/{id}`: Actualizar un producto existente.
@@ -154,10 +154,10 @@ Para obtener el descuento de un producto, el `DiscountService` realiza una solic
 
 ## Patrones y Principios
 
-- **Clean Architecture**: Para separación de responsabilidades, independencia tecnológica, facilidad de pruebas, flexibilidad y escalabilidad, y mantenibilidad.
+- **Clean Architecture**: Para separaciÃ³n de responsabilidades, independencia tecnolÃ³gica, facilidad de pruebas, flexibilidad y escalabilidad, y mantenibilidad.
 - **Repository Pattern**: Para el acceso a datos.
-- **Mediator Pattern**: Para reducir la complejidad en la comunicación entre múltiples clases. Beneficios: Desacoplamiento, Organización, Facilidad de pruebas, Flexibilidad y Manejo de comandos y consultas
-- **CQRS**: Separación de comandos y consultas.
-- **SOLID**: Principios de diseño de software.
-- **Result Pattern**: Patrón para gestión de errores y resultados.
+- **Mediator Pattern**: Para reducir la complejidad en la comunicaciÃ³n entre mÃºltiples clases. Beneficios: Desacoplamiento, OrganizaciÃ³n, Facilidad de pruebas, Flexibilidad y Manejo de comandos y consultas
+- **CQRS**: SeparaciÃ³n de comandos y consultas.
+- **SOLID**: Principios de diseÃ±o de software.
+- **Result Pattern**: PatrÃ³n para gestiÃ³n de errores y resultados.
 - **TDD**: Desarrollo guiado por pruebas.
