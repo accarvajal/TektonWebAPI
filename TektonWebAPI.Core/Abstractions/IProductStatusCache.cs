@@ -1,4 +1,4 @@
-﻿namespace TektonWebAPI.Core.Interfaces;
+﻿namespace TektonWebAPI.Core.Abstractions;
 
 public interface IProductStatusCache
 {

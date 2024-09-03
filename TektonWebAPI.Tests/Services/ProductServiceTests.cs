@@ -1,8 +1,8 @@
 ﻿using FluentAssertions;
 using Moq;
 using TektonWebAPI.Application.Services;
+using TektonWebAPI.Core.Abstractions;
 using TektonWebAPI.Core.Entities;
-using TektonWebAPI.Core.Interfaces;
 using TektonWebAPI.Core.Utilities;
 
 namespace TektonWebAPI.Tests.Services;

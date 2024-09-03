@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TektonWebAPI.Core.Abstractions;
 using TektonWebAPI.Core.Entities;
 
 namespace TektonWebAPI.Infrastructure.Repositories;

@@ -1,4 +1,4 @@
-﻿namespace TektonWebAPI.Application.Interfaces;
+﻿namespace TektonWebAPI.Application.Abstractions;
 
 public interface IAuthService
 {

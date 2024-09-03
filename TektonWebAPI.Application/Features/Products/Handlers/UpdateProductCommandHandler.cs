@@ -1,4 +1,5 @@
 ﻿using TektonWebAPI.Application.Features.Products.Commands;
+using TektonWebAPI.Core.Abstractions;
 
 namespace TektonWebAPI.Application.Features.Products.Handlers;
 

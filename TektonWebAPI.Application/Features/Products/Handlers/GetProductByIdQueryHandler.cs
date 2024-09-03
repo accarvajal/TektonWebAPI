@@ -1,4 +1,6 @@
-﻿using TektonWebAPI.Application.Features.Products.Queries;
+﻿using TektonWebAPI.Application.Abstractions;
+using TektonWebAPI.Application.Features.Products.Queries;
+using TektonWebAPI.Core.Abstractions;
 
 namespace TektonWebAPI.Application.Features.Products.Handlers;
 

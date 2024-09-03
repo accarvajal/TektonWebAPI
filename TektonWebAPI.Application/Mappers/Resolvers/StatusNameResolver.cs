@@ -1,4 +1,6 @@
-﻿namespace TektonWebAPI.Application.Mappers.Resolvers;
+﻿using TektonWebAPI.Core.Abstractions;
+
+namespace TektonWebAPI.Application.Mappers.Resolvers;
 
 public class StatusNameResolver : IValueResolver<Product, ProductResponseDto, string>
 {

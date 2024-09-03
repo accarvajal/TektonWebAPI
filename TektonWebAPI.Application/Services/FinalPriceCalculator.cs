@@ -1,4 +1,6 @@
-﻿namespace TektonWebAPI.Application.Services;
+﻿using TektonWebAPI.Application.Abstractions;
+
+namespace TektonWebAPI.Application.Services;
 
 public class FinalPriceCalculator : IFinalPriceCalculator
 {

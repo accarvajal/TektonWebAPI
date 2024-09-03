@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Caching.Memory;
+using TektonWebAPI.Core.Abstractions;
 
 namespace TektonWebAPI.Application.Services;
 

@@ -1,5 +1,6 @@
-﻿using TektonWebAPI.Application.Interfaces;
+﻿using TektonWebAPI.Application.Abstractions;
 using TektonWebAPI.Application.Services;
+using TektonWebAPI.Core.Abstractions;
 using TektonWebAPI.Infrastructure.Repositories;
 using TektonWebAPI.Infrastructure.Services;
 

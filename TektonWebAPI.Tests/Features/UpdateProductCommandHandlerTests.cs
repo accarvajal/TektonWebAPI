@@ -4,8 +4,8 @@ using Moq;
 using TektonWebAPI.Application.DTOs;
 using TektonWebAPI.Application.Features.Products.Commands;
 using TektonWebAPI.Application.Features.Products.Handlers;
+using TektonWebAPI.Core.Abstractions;
 using TektonWebAPI.Core.Entities;
-using TektonWebAPI.Core.Interfaces;
 using TektonWebAPI.Core.Utilities;
 
 namespace TektonWebAPI.Tests.Features;

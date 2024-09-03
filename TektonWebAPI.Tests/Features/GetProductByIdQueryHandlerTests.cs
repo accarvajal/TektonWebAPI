@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
 using FluentAssertions;
 using Moq;
+using TektonWebAPI.Application.Abstractions;
 using TektonWebAPI.Application.DTOs;
 using TektonWebAPI.Application.Features.Products.Commands;
 using TektonWebAPI.Application.Features.Products.Handlers;
 using TektonWebAPI.Application.Features.Products.Queries;
-using TektonWebAPI.Application.Interfaces;
+using TektonWebAPI.Core.Abstractions;
 using TektonWebAPI.Core.Entities;
-using TektonWebAPI.Core.Interfaces;
 using TektonWebAPI.Core.Utilities;
 
 public class GetProductByIdQueryHandlerTests

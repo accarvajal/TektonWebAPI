@@ -1,4 +1,6 @@
-﻿namespace TektonWebAPI.Application.Services;
+﻿using TektonWebAPI.Core.Abstractions;
+
+namespace TektonWebAPI.Application.Services;
 
 public class ProductService(IProductRepository productRepository) : IProductService
 {

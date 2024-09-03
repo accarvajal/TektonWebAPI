@@ -1,6 +1,6 @@
-﻿namespace TektonWebAPI.Core.Interfaces;
+﻿namespace TektonWebAPI.Core.Abstractions;
 
-public interface IProductRepository
+public interface IProductService
 {
     Task<Result<Product>> GetByIdAsync(int productId);
     Task<Result> AddAsync(Product product);
