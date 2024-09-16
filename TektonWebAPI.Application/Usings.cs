@@ -3,6 +3,7 @@ global using MediatR;
 global using TektonWebAPI.Application.DTOs;
 global using TektonWebAPI.Application.Abstractions;
 global using TektonWebAPI.Core.Abstractions;
+global using TektonWebAPI.Core.Common;
 global using TektonWebAPI.Core.Entities;
-global using TektonWebAPI.Core.Utilities;
+global using TektonWebAPI.Core.Errors;
 global using System.Text;

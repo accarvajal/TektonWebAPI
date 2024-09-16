@@ -1,5 +1,4 @@
-﻿using TektonWebAPI.Application.Abstractions;
-using TektonWebAPI.Application.Features.Auth.Commands;
+﻿using TektonWebAPI.Application.Features.Auth.Commands;
 
 namespace TektonWebAPI.Application.Features.Auth.Handlers;
 

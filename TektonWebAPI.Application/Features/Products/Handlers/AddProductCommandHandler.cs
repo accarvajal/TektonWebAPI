@@ -1,5 +1,4 @@
 ﻿using TektonWebAPI.Application.Features.Products.Commands;
-using TektonWebAPI.Core.Abstractions;
 
 namespace TektonWebAPI.Application.Features.Products.Handlers;
 
@@ -15,7 +14,7 @@ public class AddProductCommandHandler(IProductService productService, IMapper ma
 
         if (result.IsFailure)
         {
-            return Result<int>.Failure(result.Error, result.ErrorCode);
+            return Result<int>.Failure(result.Error);
         }
 
         return Result<int>.Success(product.ProductId);

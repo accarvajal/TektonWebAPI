@@ -1,4 +1,6 @@
-﻿namespace TektonWebAPI.Core.Abstractions;
+﻿using TektonWebAPI.Core.Common;
+
+namespace TektonWebAPI.Core.Abstractions;
 
 public interface IProductRepository
 {

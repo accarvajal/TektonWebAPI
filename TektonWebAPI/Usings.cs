@@ -1,8 +1,10 @@
 ﻿global using MediatR;
 global using TektonWebAPI.Application.DTOs;
 global using TektonWebAPI.Application.Features.Auth.Commands;
-global using TektonWebAPI.Core.Entities;
+global using TektonWebAPI.Application.Validations;
 global using TektonWebAPI.Core.Abstractions;
+global using TektonWebAPI.Core.Common;
+global using TektonWebAPI.Core.Errors;
 global using TektonWebAPI.Endpoints;
 global using TektonWebAPI.Infrastructure.Extensions;
 global using TektonWebAPI.Infrastructure.Middleware;

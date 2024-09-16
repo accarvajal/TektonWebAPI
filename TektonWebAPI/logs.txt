@@ -22,3 +22,10 @@ Request POST /api/auth/login started at 08/27/2024 00:47:24 and ended at 08/27/2
 Request GET /api/product/1 started at 08/27/2024 00:47:44 and ended at 08/27/2024 00:47:46 taking 2094ms
 Request PUT /api/product/1 started at 08/27/2024 00:48:27 and ended at 08/27/2024 00:48:27 taking 142ms
 Request GET /api/product/1 started at 08/27/2024 00:48:36 and ended at 08/27/2024 00:48:36 taking 606ms
+Request POST /api/auth/login started at 09/04/2024 23:18:17 and ended at 09/04/2024 23:18:18 taking 89ms
+Request GET /api/products/1 started at 09/04/2024 23:19:10 and ended at 09/04/2024 23:19:12 taking 1805ms
+Request POST /api/auth/login started at 09/11/2024 01:24:14 and ended at 09/11/2024 01:24:14 taking 140ms
+Request GET /api/products/1 started at 09/11/2024 01:24:59 and ended at 09/11/2024 01:25:02 taking 2586ms
+Request POST /api/auth/login started at 09/12/2024 18:14:47 and ended at 09/12/2024 18:14:47 taking 93ms
+Request POST /api/auth/login started at 09/12/2024 18:24:03 and ended at 09/12/2024 18:24:04 taking 50ms
+Request PUT /api/products/1 started at 09/12/2024 18:25:24 and ended at 09/12/2024 18:25:26 taking 1688ms

@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TektonWebAPI.Core.Abstractions;
-using TektonWebAPI.Core.Entities;
 
 namespace TektonWebAPI.Infrastructure.Repositories;
 
@@ -16,14 +14,15 @@ public class ProductRepository(ProductDbContext context) : IProductRepository
 
             if (product == null)
             {
-                return Result<Product>.Failure($"Product with ID {productId} was not found.", ErrorCode.ProductNotFound);
+                return Result<Product>.Failure(ProductErrors.NotFound(productId));
             }
 
             return Result<Product>.Success(product);
         }
         catch (Exception ex)
         {
-            return Result<Product>.Failure($"An error occurred while retrieving the product: {ex.Message}", ErrorCode.GeneralError);
+            return Result<Product>.Failure(
+                CommonErrors.GeneralError($"An error occurred while retrieving the product Id {productId} => {ex.Message}"));
         }
     }
 
@@ -35,7 +34,7 @@ public class ProductRepository(ProductDbContext context) : IProductRepository
 
             if (productQuery != null)
             {
-                return Result.Failure($"Product with ID {product.ProductId} already exists.", ErrorCode.ProductAlreadyExists);
+                return Result.Failure(ProductErrors.AlreadyExists(product.ProductId));
             }
 
             await _context.Products.AddAsync(product);
@@ -44,7 +43,8 @@ public class ProductRepository(ProductDbContext context) : IProductRepository
         }
         catch (Exception ex)
         {
-            return Result.Failure($"An error occurred while adding the product: {ex.Message}", ErrorCode.GeneralError);
+            return Result<Product>.Failure(
+                CommonErrors.GeneralError($"An error occurred while adding the product {product.Name} => {ex.Message}"));
         }
     }
 
@@ -56,12 +56,11 @@ public class ProductRepository(ProductDbContext context) : IProductRepository
 
             if (productQuery == null)
             {
-                return Result<Product>.Failure($"Product with ID {product.ProductId} was not found.", ErrorCode.ProductNotFound);
+                return Result<Product>.Failure(ProductErrors.NotFound(product.ProductId));
             }
 
             // Detach the existing entity to avoid tracking issues
             _context.Entry(productQuery).State = EntityState.Detached;
-
 
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
@@ -69,7 +68,8 @@ public class ProductRepository(ProductDbContext context) : IProductRepository
         }
         catch (Exception ex)
         {
-            return Result.Failure($"An error occurred while updating the product: {ex.Message}", ErrorCode.GeneralError);
+            return Result<Product>.Failure(
+                CommonErrors.GeneralError($"An error occurred while updating the product Id {product.ProductId} => {ex.Message}"));
         }
     }
 }

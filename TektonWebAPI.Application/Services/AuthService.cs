@@ -2,7 +2,6 @@
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using TektonWebAPI.Application.Abstractions;
 using TektonWebAPI.Application.Auth;
 
 namespace TektonWebAPI.Application.Services;
@@ -20,7 +19,7 @@ public class AuthService(IOptions<JwtSettings> jwtSettings) : IAuthService
             return Result<string>.Success(await Task.FromResult(GenerateToken(username)));
         }
 
-        return Result<string>.Failure("Invalid username or password.", errorCode: ErrorCode.GeneralError);
+        return Result<string>.Failure(AuthErrors.InvalidCredentials());
     }
 
     private string GenerateToken(string username)
@@ -30,11 +29,11 @@ public class AuthService(IOptions<JwtSettings> jwtSettings) : IAuthService
         var tokenHandler = new JwtSecurityTokenHandler();
         var tokenDescriptor = new SecurityTokenDescriptor
         {
-            Subject = new ClaimsIdentity(new[]
-            {
+            Subject = new ClaimsIdentity(
+            [
                 new Claim(ClaimTypes.Name, username),
                 new Claim(ClaimTypes.NameIdentifier, username)
-            }),
+            ]),
             Expires = DateTime.UtcNow.AddMinutes(_jwtSettings.ExpirationInMinutes),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
             Issuer = _jwtSettings.Issuer,

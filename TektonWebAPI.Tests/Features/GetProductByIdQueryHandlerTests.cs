@@ -7,8 +7,9 @@ using TektonWebAPI.Application.Features.Products.Commands;
 using TektonWebAPI.Application.Features.Products.Handlers;
 using TektonWebAPI.Application.Features.Products.Queries;
 using TektonWebAPI.Core.Abstractions;
+using TektonWebAPI.Core.Common;
 using TektonWebAPI.Core.Entities;
-using TektonWebAPI.Core.Utilities;
+using TektonWebAPI.Core.Errors;
 
 public class GetProductByIdQueryHandlerTests
 {
@@ -87,7 +88,7 @@ public class GetProductByIdQueryHandlerTests
         var query = new GetProductByIdQuery(productId);
 
         _productServiceMock.Setup(service => service.GetByIdAsync(productId))
-            .ReturnsAsync(Result<Product>.Failure("Product not found.", ErrorCode.ProductNotFound));
+            .ReturnsAsync(Result<Product>.Failure("Product not found.", Error.ProductNotFound));
 
         // Act
         var result = await _handler.Handle(query, CancellationToken.None);

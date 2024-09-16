@@ -1,5 +1,4 @@
 ﻿using Microsoft.OpenApi.Models;
-
 namespace TektonWebAPI.Infrastructure.Extensions;
 
 public static class ApiDocConfigurationExtension

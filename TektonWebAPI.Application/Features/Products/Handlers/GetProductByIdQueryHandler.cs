@@ -1,6 +1,4 @@
-﻿using TektonWebAPI.Application.Abstractions;
-using TektonWebAPI.Application.Features.Products.Queries;
-using TektonWebAPI.Core.Abstractions;
+﻿using TektonWebAPI.Application.Features.Products.Queries;
 
 namespace TektonWebAPI.Application.Features.Products.Handlers;
 
@@ -24,7 +22,7 @@ public class GetProductByIdQueryHandler(
 
         if (result.IsFailure)
         {
-            return Result<ProductResponseDto>.Failure(result.Error, result.ErrorCode);
+            return Result<ProductResponseDto>.Failure(result.Error);
         }
 
         var productDto = _mapper.Map<ProductResponseDto>(result.Value);

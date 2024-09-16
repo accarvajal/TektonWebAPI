@@ -5,8 +5,9 @@ using TektonWebAPI.Application.DTOs;
 using TektonWebAPI.Application.Features.Products.Commands;
 using TektonWebAPI.Application.Features.Products.Handlers;
 using TektonWebAPI.Core.Abstractions;
+using TektonWebAPI.Core.Common;
 using TektonWebAPI.Core.Entities;
-using TektonWebAPI.Core.Utilities;
+using TektonWebAPI.Core.Errors;
 
 namespace TektonWebAPI.Tests.Features;
 
@@ -87,14 +88,14 @@ public class AddProductCommandHandlerTests
         _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
             .Returns(product);
         _productServiceMock.Setup(service => service.AddAsync(product))
-            .ReturnsAsync(Result<int>.Failure("Product ID already exists", ErrorCode.ProductAlreadyExists));
+            .ReturnsAsync(Result<int>.Failure(ProductErrors.AlreadyExists(product.ProductId));
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);
 
         // Assert
         result.IsSuccess.Should().BeFalse();
-        result.Error.Should().Be("Product ID already exists");
+        result.Error.Code.Should().Be(ProductErrors.ProductAlreadyExists);
     }
 
     [Fact]
@@ -124,13 +125,13 @@ public class AddProductCommandHandlerTests
         _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
             .Returns(product);
         _productServiceMock.Setup(service => service.AddAsync(product))
-            .ReturnsAsync(Result<int>.Failure("Invalid product data", ErrorCode.GeneralError));
+            .ReturnsAsync(Result<int>.Failure(CommonErrors.GeneralError("Invalid product data")));
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);
 
         // Assert
         result.IsSuccess.Should().BeFalse();
-        result.Error.Should().Be("Invalid product data");
+        result.Error.Description.Should().Be("Invalid product data");
     }
 }

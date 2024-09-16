@@ -1,5 +1,11 @@
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true);
+
+builder.Host.ConfigureLogs(builder.Configuration);
+
 // Add services to the container.
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistence(builder.Configuration);
@@ -8,9 +14,12 @@ builder.Services.AddValidationServices();
 builder.Services.AddApiDocumentation();
 builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddMemoryCache();
+builder.Services.AddCustomServices();
 builder.Services.AddMediatR(options => options.RegisterServicesFromAssembly(typeof(LoginCommand).Assembly));
 builder.Services.AddAuthorization();
 
+
+// It could be "Day", "Month", etc.
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -22,12 +31,17 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
-app.UseMiddleware<ExceptionHandlingMiddleware>();
-app.UseMiddleware<RequestTimingMiddleware>();
+app.UseRequestContextLogging();
+
+app.UseRequestExceptionHandling();
+
+app.UseRequestTiming();
 
 app.MapProductEndpoints();
+
 app.MapAuthEndpoints();
 
 app.Run();

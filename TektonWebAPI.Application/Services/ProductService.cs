@@ -1,6 +1,4 @@
-﻿using TektonWebAPI.Core.Abstractions;
-
-namespace TektonWebAPI.Application.Services;
+﻿namespace TektonWebAPI.Application.Services;
 
 public class ProductService(IProductRepository productRepository) : IProductService
 {
@@ -12,7 +10,7 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 
         if (result.IsFailure)
         {
-            return Result<Product>.Failure(result.Error, result.ErrorCode);
+            return Result<Product>.Failure(result.Error);
         }
 
         return Result<Product>.Success(result.Value!);
@@ -24,7 +22,7 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 
         if (result.IsFailure)
         {
-            return Result<Product>.Failure(result.Error, result.ErrorCode);
+            return Result<Product>.Failure(result.Error);
         }
 
         return Result.Success();
@@ -36,7 +34,7 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 
         if (result.IsFailure)
         {
-            return Result.Failure(result.Error, result.ErrorCode);
+            return Result.Failure(result.Error);
         }
 
         return Result.Success();

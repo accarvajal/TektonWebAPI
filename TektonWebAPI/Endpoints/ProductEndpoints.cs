@@ -1,7 +1,5 @@
 ﻿using TektonWebAPI.Application.Features.Products.Commands;
 using TektonWebAPI.Application.Features.Products.Queries;
-using TektonWebAPI.Application.Validations;
-using TektonWebAPI.Core.Utilities;
 
 namespace TektonWebAPI.Endpoints;
 
@@ -9,24 +7,23 @@ public static class ProductEndpoints
 {
     public static void MapProductEndpoints(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/api/product/{id}", async (int id, IMediator mediator) =>
+        endpoints.MapGet("/api/products/{id}", async (int id, IMediator mediator) =>
         {
             var query = new GetProductByIdQuery(id);
             var result = await mediator.Send(query);
 
-            if (result.IsFailure)
-            {
-                return result.ErrorCode switch
+            return result.Match(
+                onSuccess: () => Results.Ok(result.Value),
+                onFailure: error => error.Code switch
                 {
-                    ErrorCode.ProductNotFound => Results.NotFound(new { Message = result.Error }),
-                    _ => Results.BadRequest(new { Message = result.Error })
-                };
-            }
+                    ProductErrors.ProductNotFound => Results.NotFound(new { Message = error.Description }),
+                    _ => Results.BadRequest(new { Message = error.Description })
+                });
+        })
+        .RequireAuthorization()
+        .Produces<ProductResponseDto>(StatusCodes.Status200OK);
 
-            return Results.Ok(result.Value);
-        }).RequireAuthorization();
-
-        endpoints.MapPost("/api/product", async (ProductRequestDto productDto, IMediator mediator) =>
+        endpoints.MapPost("/api/products", async (ProductRequestDto productDto, IMediator mediator) =>
         {
             var validator = new ProductValidator();
             var validationResult = await validator.ValidateAsync(productDto);
@@ -39,19 +36,18 @@ public static class ProductEndpoints
             var command = new AddProductCommand(productDto);
             var result = await mediator.Send(command);
 
-            if (result.IsFailure)
-            {
-                return result.ErrorCode switch
+            return result.Match(
+                onSuccess: () => Results.Created($"/api/product/{result.Value}", new { Id = result.Value }),
+                onFailure: error => error.Code switch
                 {
-                    ErrorCode.ProductAlreadyExists => Results.Conflict(new { Message = result.Error }),
-                    _ => Results.BadRequest(new { Message = result.Error })
-                };
-            }
+                    ProductErrors.ProductAlreadyExists => Results.Conflict(new { Message = error.Description }),
+                    _ => Results.BadRequest(new { Message = error.Description })
+                });
+        })
+        .RequireAuthorization()
+        .Produces<int>(StatusCodes.Status201Created);
 
-            return Results.Created($"/api/product/{result.Value}", new { Id = result.Value });
-        }).RequireAuthorization();
-
-        endpoints.MapPut("/api/product/{id}", async (int id, ProductRequestDto productDto, IMediator mediator) =>
+        endpoints.MapPut("/api/products/{id}", async (int id, ProductRequestDto productDto, IMediator mediator) =>
         {
             var validator = new ProductValidator();
             var validationResult = await validator.ValidateAsync(productDto);
@@ -64,15 +60,15 @@ public static class ProductEndpoints
             var command = new UpdateProductCommand(id, productDto);
             var result = await mediator.Send(command);
 
-            if (result.IsFailure)
-            {
-                return result.ErrorCode switch
+            return result.Match(
+                onSuccess: () => Results.NoContent(),
+                onFailure: error => error.Code switch
                 {
-                    ErrorCode.ProductNotFound => Results.NotFound(new { Message = result.Error }),
-                    _ => Results.BadRequest(new { Message = result.Error })
-                };
-            }
-            return Results.NoContent();
-        }).RequireAuthorization();
+                    ProductErrors.ProductNotFound => Results.NotFound(new { Message = error.Description }),
+                    _ => Results.BadRequest(new { Message = error.Description })
+                });
+        })
+        .RequireAuthorization()
+        .Produces(StatusCodes.Status204NoContent);
     }
 }

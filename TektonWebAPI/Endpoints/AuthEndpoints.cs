@@ -8,13 +8,9 @@ public static class AuthEndpoints
         {
             var result = await mediator.Send(command);
 
-            if (result.IsFailure)
-            {
-                //return Results.Unauthorized();
-                return Results.Json(new { Message = result.Error }, statusCode: StatusCodes.Status401Unauthorized);
-            }
-
-            return Results.Ok(new { Token = result.Value });
+            return result.Match(
+                onSuccess: () => Results.Ok(new { Token = result.Value }),
+                onFailure: error => Results.Json(new { Message = error }, statusCode: StatusCodes.Status401Unauthorized));
         });
     }
 }
