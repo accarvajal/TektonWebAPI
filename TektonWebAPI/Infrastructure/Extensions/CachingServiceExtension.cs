@@ -1,4 +1,7 @@
-using TektonWebAPI.Infrastructure.Abstractions;
+using Microsoft.Extensions.Caching.Memory;
+using Microsoft.Extensions.Caching.StackExchangeRedis;
+using Microsoft.Extensions.Options;
+using StackExchange.Redis;
 using TektonWebAPI.Infrastructure.Configuration;
 using TektonWebAPI.Infrastructure.Services;
 using ZiggyCreatures.Caching.Fusion;
@@ -18,11 +21,24 @@ public static class CachingServiceExtension
         // Register cache services based on the strategy
         if (cacheSettings!.Strategy == "FusionCache")
         {
-            services.AddFusionCache()
+            // Hybrid cache that can work as memory cache (L1) or as distributed cache (L2) using any implementation of IDistributedCache, to get the most of both worlds.
+            var fusionCacheBuilder = services.AddFusionCache()
                 .WithDefaultEntryOptions(new FusionCacheEntryOptions
                 {
-                    Duration = TimeSpan.FromMinutes(cacheSettings.ExpirationMinutes)
+                    Duration = TimeSpan.FromMinutes(cacheSettings.ExpirationMinutes),
+                    Priority = CacheItemPriority.High
                 });
+
+            // Configure distributed cache if "DistributedCache" entry is present
+            if (cacheSettings.DistributedCache?.UseRedis == true)
+            {
+                fusionCacheBuilder.WithDistributedCache(new RedisCache(
+                    new RedisCacheOptions
+                    {
+                        Configuration = cacheSettings.DistributedCache.RedisConfiguration
+                    }
+                ));
+            }
 
             services.AddTransient<ICacheService, FusionCacheService>();
         }
