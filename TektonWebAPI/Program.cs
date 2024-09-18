@@ -13,7 +13,7 @@ builder.Services.AddCustomMappings();
 builder.Services.AddValidationServices();
 builder.Services.AddApiDocumentation();
 builder.Services.AddJwtAuthentication(builder.Configuration);
-builder.Services.AddMemoryCache();
+builder.Services.AddCacheService(builder.Configuration);
 builder.Services.AddCustomServices();
 builder.Services.AddMediatR(options => options.RegisterServicesFromAssembly(typeof(LoginCommand).Assembly));
 builder.Services.AddAuthorization();
