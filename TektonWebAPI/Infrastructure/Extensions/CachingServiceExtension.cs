@@ -1,7 +1,5 @@
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Caching.StackExchangeRedis;
-using Microsoft.Extensions.Options;
-using StackExchange.Redis;
 using TektonWebAPI.Infrastructure.Configuration;
 using TektonWebAPI.Infrastructure.Services;
 using ZiggyCreatures.Caching.Fusion;
