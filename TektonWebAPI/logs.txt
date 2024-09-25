@@ -29,3 +29,46 @@ Request GET /api/products/1 started at 09/11/2024 01:24:59 and ended at 09/11/20
 Request POST /api/auth/login started at 09/12/2024 18:14:47 and ended at 09/12/2024 18:14:47 taking 93ms
 Request POST /api/auth/login started at 09/12/2024 18:24:03 and ended at 09/12/2024 18:24:04 taking 50ms
 Request PUT /api/products/1 started at 09/12/2024 18:25:24 and ended at 09/12/2024 18:25:26 taking 1688ms
+Request POST /api/auth/login started at 09/20/2024 23:01:41 and ended at 09/20/2024 23:01:41 taking 111ms
+Request POST /api/products started at 09/20/2024 23:02:46 and ended at 09/20/2024 23:02:47 taking 1811ms
+Request POST /api/products started at 09/20/2024 23:03:17 and ended at 09/20/2024 23:03:17 taking 21ms
+Request POST /api/products started at 09/20/2024 23:03:43 and ended at 09/20/2024 23:03:43 taking 43ms
+Request POST /api/auth/login started at 09/20/2024 23:40:44 and ended at 09/20/2024 23:40:44 taking 83ms
+Request POST /api/auth/login started at 09/24/2024 01:51:03 and ended at 09/24/2024 01:51:03 taking 112ms
+Request POST /api/auth/login started at 09/24/2024 02:00:47 and ended at 09/24/2024 02:00:47 taking 53ms
+Request POST /api/products started at 09/24/2024 02:02:13 and ended at 09/24/2024 02:02:14 taking 1813ms
+Request POST /api/auth/login started at 09/24/2024 02:06:00 and ended at 09/24/2024 02:06:00 taking 61ms
+Request POST /api/auth/login started at 09/24/2024 02:39:51 and ended at 09/24/2024 02:39:51 taking 62ms
+Request POST /api/auth/login started at 23/09/2024 9:45:43 p. m. and ended at 23/09/2024 9:45:43 p. m. taking 163ms
+Request GET /api/products/1 started at 23/09/2024 9:46:02 p. m. and ended at 23/09/2024 9:46:23 p. m. taking 20558ms
+Request GET /api/products/1 started at 23/09/2024 9:46:28 p. m. and ended at 23/09/2024 9:46:28 p. m. taking 10ms
+Request GET /api/products/1 started at 23/09/2024 9:46:29 p. m. and ended at 23/09/2024 9:46:29 p. m. taking 2ms
+Request GET /api/products/1 started at 23/09/2024 9:46:30 p. m. and ended at 23/09/2024 9:46:30 p. m. taking 2ms
+Request GET /api/products/1 started at 23/09/2024 9:46:43 p. m. and ended at 23/09/2024 9:46:43 p. m. taking 2ms
+Request GET /api/products/1 started at 23/09/2024 9:46:43 p. m. and ended at 23/09/2024 9:46:43 p. m. taking 2ms
+Request GET /api/products/1 started at 23/09/2024 9:46:44 p. m. and ended at 23/09/2024 9:46:44 p. m. taking 2ms
+Request GET /api/products/1 started at 23/09/2024 9:46:44 p. m. and ended at 23/09/2024 9:46:44 p. m. taking 2ms
+Request POST /api/auth/login started at 09/24/2024 03:10:51 and ended at 09/24/2024 03:10:51 taking 59ms
+Request GET / started at 09/24/2024 03:35:14 and ended at 09/24/2024 03:35:14 taking 0ms
+Request GET /swagger started at 09/24/2024 03:36:31 and ended at 09/24/2024 03:36:31 taking 0ms
+Request GET / started at 09/24/2024 03:51:48 and ended at 09/24/2024 03:51:48 taking 0ms
+Request GET /swagger started at 09/24/2024 03:55:46 and ended at 09/24/2024 03:55:46 taking 0ms
+Request GET /swagger started at 09/24/2024 03:56:00 and ended at 09/24/2024 03:56:00 taking 0ms
+Request GET /swagger started at 09/24/2024 04:00:01 and ended at 09/24/2024 04:00:01 taking 0ms
+Request GET /swagger started at 09/24/2024 04:00:05 and ended at 09/24/2024 04:00:05 taking 0ms
+Request GET /swagger started at 09/24/2024 04:07:17 and ended at 09/24/2024 04:07:17 taking 0ms
+Request GET / started at 09/24/2024 04:21:57 and ended at 09/24/2024 04:21:57 taking 0ms
+Request GET /swagger started at 09/24/2024 04:22:04 and ended at 09/24/2024 04:22:04 taking 0ms
+Request POST /api/auth/login started at 25/09/2024 4:32:58 p. m. and ended at 25/09/2024 4:32:58 p. m. taking 249ms
+Request POST /api/auth/login started at 25/09/2024 5:03:28 p. m. and ended at 25/09/2024 5:03:28 p. m. taking 87ms
+Request POST /api/auth/login started at 25/09/2024 5:03:30 p. m. and ended at 25/09/2024 5:03:30 p. m. taking 35ms
+Request POST /api/auth/login started at 25/09/2024 5:06:35 p. m. and ended at 25/09/2024 5:06:35 p. m. taking 85ms
+Request GET /api/products/1 started at 25/09/2024 5:07:16 p. m. and ended at 25/09/2024 5:07:25 p. m. taking 9210ms
+Request GET /api/products/1 started at 25/09/2024 5:07:32 p. m. and ended at 25/09/2024 5:07:32 p. m. taking 2ms
+Request GET /api/products/1 started at 25/09/2024 5:07:34 p. m. and ended at 25/09/2024 5:07:34 p. m. taking 1ms
+Request GET /api/products/1 started at 25/09/2024 5:07:34 p. m. and ended at 25/09/2024 5:07:34 p. m. taking 0ms
+Request GET /api/products/1 started at 25/09/2024 5:07:35 p. m. and ended at 25/09/2024 5:07:35 p. m. taking 1ms
+Request GET /api/products/1 started at 25/09/2024 5:07:35 p. m. and ended at 25/09/2024 5:07:35 p. m. taking 0ms
+Request GET /api/products/1 started at 25/09/2024 5:07:35 p. m. and ended at 25/09/2024 5:07:35 p. m. taking 0ms
+Request GET /api/products/1 started at 25/09/2024 5:07:35 p. m. and ended at 25/09/2024 5:07:35 p. m. taking 0ms
+Request GET /api/products/1 started at 25/09/2024 5:07:36 p. m. and ended at 25/09/2024 5:07:36 p. m. taking 1ms

@@ -1,29 +1,35 @@
-﻿using Microsoft.Extensions.Caching.Memory;
+﻿using Microsoft.Extensions.Caching.Distributed;
+using System.Text.Json;
 
 namespace TektonWebAPI.Application.Services;
 
-public class ProductStatusCache(IMemoryCache cache) : IProductStatusCache
+public class ProductStatusCache(IDistributedCache cache) : IProductStatusCache
 {
-    private readonly IMemoryCache _cache = cache;
+    private readonly IDistributedCache _cache = cache;
     private readonly TimeSpan _cacheDuration = TimeSpan.FromMinutes(5);
 
     public Dictionary<int, string> GetProductStatuses()
     {
-        if (!_cache.TryGetValue("ProductStatuses", out Dictionary<int, string>? statuses))
+        var cachedData = _cache.GetString("ProductStatuses");
+        if (cachedData != null)
         {
-            statuses = new Dictionary<int, string>
-                {
-                    { 1, "Active" },
-                    { 0, "Inactive" }
-                };
-            
-            var cacheEntryOptions = new MemoryCacheEntryOptions
+            return JsonSerializer.Deserialize<Dictionary<int, string>>(cachedData)!;
+        }
+
+        var statuses = new Dictionary<int, string>
             {
-                AbsoluteExpirationRelativeToNow = _cacheDuration
+                { 1, "Active" },
+                { 0, "Inactive" }
             };
 
-            _cache.Set("ProductStatuses", statuses, cacheEntryOptions);
-        }
+        var serializedData = JsonSerializer.Serialize(statuses);
+
+        var options = new DistributedCacheEntryOptions
+        {
+            AbsoluteExpirationRelativeToNow = _cacheDuration
+        };
+
+        _cache.SetString("ProductStatuses", serializedData, options);
 
         return statuses!;
     }

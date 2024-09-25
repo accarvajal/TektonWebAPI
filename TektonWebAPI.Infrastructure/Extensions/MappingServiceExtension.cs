@@ -2,9 +2,9 @@
 
 namespace TektonWebAPI.Infrastructure.Extensions;
 
-public static class CustomMappingsExtension
+internal static class MappingServiceExtension
 {
-    public static IServiceCollection AddCustomMappings(this IServiceCollection services)
+    internal static IServiceCollection AddMappings(this IServiceCollection services)
     {
         services.AddAutoMapper(typeof(ProductProfile));
 

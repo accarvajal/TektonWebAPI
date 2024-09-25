@@ -1,4 +1,6 @@
-﻿namespace TektonWebAPI.Infrastructure.Middleware;
+﻿using Microsoft.AspNetCore.Builder;
+
+namespace TektonWebAPI.Infrastructure.Middleware;
 
 public static class ApplicationBuilderExtensions
 {

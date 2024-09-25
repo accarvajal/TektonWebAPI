@@ -1,0 +1,12 @@
+services:
+  tektonwebapi:
+    image: ${DOCKER_REGISTRY-}tektonwebapi
+    build:
+      context: .
+      dockerfile: TektonWebAPI/Dockerfile
+    networks:
+      - redis_net
+
+networks:
+  redis_net:
+    external: true

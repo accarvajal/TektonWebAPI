@@ -1,13 +1,14 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using MediatR;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Serilog.Context;
 using TektonWebAPI.Common.Abstractions;
 using TektonWebAPI.Common.Constants;
 
-namespace TektonWebAPI.Application.Behaviors;
+namespace TektonWebAPI.Infrastructure.Behaviors;
 
 public sealed class RequestLoggingPipelineBehavior<TRequest, TResponse>(
-    ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger, 
+    ILogger<RequestLoggingPipelineBehavior<TRequest, TResponse>> logger,
     ICurrentUserService currentUserService,
     IConfiguration configuration
 ) : IPipelineBehavior<TRequest, TResponse>

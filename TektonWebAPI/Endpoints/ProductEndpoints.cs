@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using TektonWebAPI.Application.Features.Products.Commands;
 using TektonWebAPI.Application.Features.Products.Queries;
+using TektonWebAPI.Common.Abstractions;
 
 namespace TektonWebAPI.Endpoints;
 

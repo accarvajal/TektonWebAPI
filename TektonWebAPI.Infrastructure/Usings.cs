@@ -1,5 +1,12 @@
-﻿global using TektonWebAPI.Core.Entities;
+﻿global using Microsoft.AspNetCore.Http;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using TektonWebAPI.Core.Entities;
 global using TektonWebAPI.Core.Abstractions;
 global using TektonWebAPI.Core.Common;
 global using TektonWebAPI.Core.Errors;
+global using TektonWebAPI.Infrastructure.Abstractions;
+global using TektonWebAPI.Infrastructure.Configuration;
 global using TektonWebAPI.Infrastructure.Data;
+global using TektonWebAPI.Infrastructure.Repositories;
+global using TektonWebAPI.Infrastructure.Services;

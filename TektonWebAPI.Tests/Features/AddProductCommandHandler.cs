@@ -88,7 +88,7 @@ public class AddProductCommandHandlerTests
         _mapperMock.Setup(mapper => mapper.Map<Product>(productDto))
             .Returns(product);
         _productServiceMock.Setup(service => service.AddAsync(product))
-            .ReturnsAsync(Result<int>.Failure(ProductErrors.AlreadyExists(product.ProductId));
+            .ReturnsAsync(Result<int>.Failure(ProductErrors.AlreadyExists(product.ProductId)));
 
         // Act
         var result = await _handler.Handle(command, CancellationToken.None);

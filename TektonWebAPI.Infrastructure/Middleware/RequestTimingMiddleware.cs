@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace TektonWebAPI.Infrastructure.Middleware;
 

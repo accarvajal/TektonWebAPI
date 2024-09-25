@@ -2,8 +2,6 @@
 using Microsoft.Extensions.Options;
 using System.Collections.Concurrent;
 using System.Text.Json;
-using TektonWebAPI.Infrastructure.Abstractions;
-using TektonWebAPI.Infrastructure.Configuration;
 
 namespace TektonWebAPI.Infrastructure.Services;
 

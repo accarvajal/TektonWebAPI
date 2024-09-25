@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using TektonWebAPI.Application.Abstractions;
 using TektonWebAPI.Application.Auth;
+using TektonWebAPI.Application.Services;
 
 namespace TektonWebAPI.Infrastructure.Extensions;
 
-public static class AuthConfigurationExtension
+internal static class AuthServiceExtension
 {
-    public static IServiceCollection AddJwtAuthentication(this IServiceCollection services, IConfiguration configuration)
+    internal static IServiceCollection AddAuthenticationService(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<JwtSettings>(configuration.GetSection(nameof(JwtSettings)));
 
@@ -35,6 +36,8 @@ public static class AuthConfigurationExtension
                 IssuerSigningKey = new SymmetricSecurityKey(secret)
             };
         });
+
+        services.AddScoped<IAuthService, AuthService>();
 
         return services;
     }

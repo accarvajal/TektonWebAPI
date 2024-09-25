@@ -1,9 +1,10 @@
 ﻿using Microsoft.OpenApi.Models;
+
 namespace TektonWebAPI.Infrastructure.Extensions;
 
-public static class ApiDocConfigurationExtension
+internal static class ApiServiceExtension
 {
-    public static IServiceCollection AddApiDocumentation(this IServiceCollection services)
+    internal static IServiceCollection AddApiDocumentation(this IServiceCollection services)
     {
         services.AddEndpointsApiExplorer();
         

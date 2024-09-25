@@ -2,11 +2,11 @@
 using FluentValidation.AspNetCore;
 using TektonWebAPI.Application.Validations;
 
-namespace TektonWebAPI.Infrastructure.Extensions;
+namespace TektonWebAPI.Application.Extensions;
 
-public static class ValidationServiceExtension
+internal static class ValidationServiceExtension
 {
-    public static IServiceCollection AddValidationServices(this IServiceCollection services)
+    internal static IServiceCollection AddValidationServices(this IServiceCollection services)
     {
         services.AddValidatorsFromAssemblyContaining<ProductValidator>();
         services.AddFluentValidationAutoValidation();

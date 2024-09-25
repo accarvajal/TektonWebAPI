@@ -1,8 +1,9 @@
-﻿using Serilog;
+﻿using Microsoft.AspNetCore.Builder;
+using Serilog;
 
-namespace TektonWebAPI.Infrastructure.Extensions;
+namespace TektonWebAPI.Infrastructure.Middleware;
 
-public static class LoggingExtension
+public static class HostBuilderExtension
 {
     public static void ConfigureLogs(this ConfigureHostBuilder hostBuilder, IConfiguration configuration)
     {

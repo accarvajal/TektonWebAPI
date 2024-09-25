@@ -1,5 +1,6 @@
 ﻿global using AutoMapper;
 global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
 global using TektonWebAPI.Application.DTOs;
 global using TektonWebAPI.Application.Abstractions;
 global using TektonWebAPI.Core.Abstractions;
